@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   mode: "jit",
   purge: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
@@ -8,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        amazon_blue: {
+        header_color: {
           light: "#232F3E",
           DEFAULT: "#131921",
         },
