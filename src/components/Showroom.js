@@ -3,29 +3,20 @@ import Spline from '@splinetool/react-spline';
 
 function Showroom() {
   return (
-    <div className='flex bg-header_color' 
+    <div className='flex bg-header_color mr-10 w-full h-full' 
       style={{
         contain:'content',
-        width:'100%'
+        
 
     
     }}>
-        <div>
-            <h2 className='ml-20 mt-20'
-              style={{
-                justifyContent:'center',
-                alignContent:'center'
-
-                
-              }}>Welcome to CaRo</h2>
-        </div>
-        <Spline 
-          className='spline showroom mt-20'
+       
+        <Spline loading="lazy"
+          className='spline showroom mt-20 w-full h-full '
           style={{
             
             contain:'content',
-            
-            width:'100%'
+        
         
     
             

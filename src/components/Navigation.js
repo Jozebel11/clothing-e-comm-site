@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Container from 'react-bootstrap/Container';
+import Accordion from 'react-bootstrap/Accordion';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
 export default function Navigation() {
   const [clientWindowHeight, setClientWindowHeight] = useState("");
@@ -39,48 +46,49 @@ export default function Navigation() {
       }}
     >
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <Image 
             src="/caro-high-resolution-logo-color-on-transparent-background (1).png"
             width={170}
             height={30}
           />
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarText">
-          <ul className="navbar-nav mr-auto "
-            style={{
-              color:'white'
-            }}
-            
+        <>
+      {[false].map((expand) => (
+        <Navbar key={expand} bg="transparent" expand={expand} variant="dark" className="mb-1" id='nav-3'>
+          <Container className='header-container' fluid>
+            <Navbar.Toggle className='header-toggle' aria-controls={`offcanvasNavbar-expand-${expand}`}
+              style={{
+                color:'white',
+                border:'none'
+              }} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+              style={{
+                background:'rgba(51, 65, 85,1)',
+                color:'white'
+              }}
             >
-            <li className="nav-item active text-white">
-              <a className="nav-link text-white" href="#">
-                About
-              </a>
-            </li>
-            <li className="nav-item text-white">
-              <a className="nav-link text-white" href="#">
-                New in
-              </a>
-            </li>
-            <li className="nav-item text-white">
-              <a className="nav-link text-white" href="#">
-                Clothing
-              </a>
-            </li>
-          </ul>
-        </div>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link href="#action1">About</Nav.Link>
+                  <Nav.Link href="#action2">New in</Nav.Link>
+                  <Nav.Link href="#action2">Clothing</Nav.Link>
+                  <Nav.Link href="#action2">Sign in</Nav.Link>
+                  <Nav.Link className="flex" href="#action2"><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">0</span></Nav.Link>
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
+    </>
       </div>
     </nav>
   );
