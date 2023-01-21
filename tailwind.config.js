@@ -10,8 +10,8 @@ module.exports = {
     extend: {
       colors: {
         header_color: {
-          light: "#232F3E",
-          DEFAULT: "#131921",
+          light: "rgb(15 23 42)",
+          DEFAULT: "rgb(15 23 42)",
         },
       },
     },

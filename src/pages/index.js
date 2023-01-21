@@ -16,8 +16,10 @@ export default function Home() {
       <main className="bg-slate-900" style={{
         contain:'content',
         display:'flex',
-        padding:'60px',
-        maxHeight:'100px'
+        marginTop:'100px',
+        justifyContent:'center'
+        
+        
       }}>
       <Slideshow className="bg-slate-900"/>
       </main>
