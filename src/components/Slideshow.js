@@ -19,7 +19,7 @@ function Slideshow() {
         
         >
             <div className="flex content-center flex-col" style={{
-                backgroundColor:'#1E1E1E',
+                
                 padding:'20px',
                 
             }}>

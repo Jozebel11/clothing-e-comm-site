@@ -2,11 +2,13 @@ import { BorderAllRounded } from "@mui/icons-material";
 import { padding, width } from "@mui/system";
 import Head from "next/head";
 import Header from "../components/Navigation"
+import ProductFeed from "../components/ProductFeed";
 import Showroom from "../components/Showroom"
 import Slideshow from "../components/Slideshow"
 
 
-export default function Home() {
+
+export default function Home({ products }) {
   return (
     <div style={{
       backgroundColor:'#0F172A'
@@ -21,7 +23,7 @@ export default function Home() {
         display:'flex',
         marginTop:'100px',
         justifyContent:'center',
-        backgroundColor:'#1E1E1E',
+        
         width:'40%',
         minWidth:'fit-content',
         padding:'20px',
@@ -35,7 +37,20 @@ export default function Home() {
         margin:''
       }}/>
       </main>
+      <ProductFeed products={products}/>
       
     </div>
   );
+}
+export async function getServerSideProps(context){
+  const products = await fetch("http://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+
+  return {
+    props: {
+      products,
+    },
+  }
+
 }
