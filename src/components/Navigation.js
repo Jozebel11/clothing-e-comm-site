@@ -40,7 +40,7 @@ export default function Navigation() {
     <nav
       className="navbar navbar-expand-lg navbar-light fixed-top"
       style={{
-        background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+        background: `rgba(51, 65, 85, ${backgroundTransparacy})`,
         padding: `${padding}px 0px`,
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
       }}

@@ -1,3 +1,4 @@
+import { BorderAllRounded } from "@mui/icons-material";
 import { padding, width } from "@mui/system";
 import Head from "next/head";
 import Header from "../components/Navigation"
@@ -7,21 +8,32 @@ import Slideshow from "../components/Slideshow"
 
 export default function Home() {
   return (
-    <div className="bg-slate-900">
+    <div style={{
+      backgroundColor:'#0F172A'
+    }}>
       <Head>
         <title>Clothing E-comm-site</title>
       </Head>
       <Header/>
       <Showroom/>
-      <main className="bg-slate-900" style={{
+      <main style={{
         contain:'content',
         display:'flex',
         marginTop:'100px',
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundColor:'#1E1E1E',
+        width:'40%',
+        minWidth:'fit-content',
+        padding:'20px',
+        borderRadius:'5px',
+        marginLeft:'20px',
+        marginRight:'20px'
         
         
       }}>
-      <Slideshow className="bg-slate-900"/>
+      <Slideshow style={{
+        margin:''
+      }}/>
       </main>
       
     </div>

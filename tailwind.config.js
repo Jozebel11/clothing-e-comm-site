@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        header_color: {
-          light: "rgb(15 23 42)",
-          DEFAULT: "rgb(15 23 42)",
+        bg_color: {
+          'slate-900': "#0F172A",
+          DEFAULT: "#0F172A",
         },
       },
     },

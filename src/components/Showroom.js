@@ -3,7 +3,7 @@ import Spline from '@splinetool/react-spline';
 
 function Showroom() {
   return (
-    <div className='flex bg-header_color mr-10 w-full h-full' 
+    <div className='flex bg_color mr-10 w-full h-full' 
       style={{
         contain:'content',
         
