@@ -33,9 +33,7 @@ export default function Home({ products }) {
         
         
       }}>
-      <Slideshow style={{
-        margin:''
-      }}/>
+      
       </main>
       <ProductFeed products={products}/>
       
@@ -43,7 +41,7 @@ export default function Home({ products }) {
   );
 }
 export async function getServerSideProps(context){
-  const products = await fetch("http://fakestoreapi.com/products").then(
+  const products = await fetch("http://fakestoreapi.com/products/category/men's%20clothing").then(
     (res) => res.json()
   );
 
