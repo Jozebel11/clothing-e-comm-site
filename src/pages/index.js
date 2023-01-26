@@ -9,9 +9,12 @@ import Slideshow from "../components/Slideshow"
 
 
 export default function Home({ products }) {
+
   return (
     <div style={{
-      backgroundColor:'#0F172A'
+      backgroundColor:'#0F172A',
+      
+
     }}>
       <Head>
         <title>Clothing E-comm-site</title>
@@ -40,15 +43,30 @@ export default function Home({ products }) {
     </div>
   );
 }
+
 export async function getServerSideProps(context){
-  const products = await fetch("http://fakestoreapi.com/products/category/men's%20clothing").then(
-    (res) => res.json()
-  );
+  const data = await Promise.all([
+   await fetch("http://fakestoreapi.com/products/category/men's%20clothing"),
+   await fetch("http://fakestoreapi.com/products/category/women's%20clothing")
+  ]).then((res) => Promise.all(res.map(function (res) {
+		return res.json();
+  }))).then(function (data) {
+    // Log the data to the console
+    // You would do something with both sets of data here
+    const product = data;
+    return product;
+  }).catch(function (error) {
+    // if there's an error, log it
+    console.log(error);
+  });
+  const products = JSON.parse(JSON.stringify(data.reduce((a,b) => a.concat(b))))
 
   return {
     props: {
       products,
-    },
+    }
   }
+  
 
 }
+//"http://fakestoreapi.com/products/category/men's%20clothing"

@@ -2,8 +2,9 @@ import React from 'react'
 import Product from './Product'
 
 function ProductFeed({ products }) {
+    console.log(products, "test")
   return (
-    <div>
+    <div className='flex mx-5 pt-4 justify-center bg-white flex-wrap'>
         {products.map(({ id, title, description, price, category, image })=> (
             <Product
               key={id}
