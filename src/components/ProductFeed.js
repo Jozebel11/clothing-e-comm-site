@@ -5,6 +5,8 @@ function ProductFeed({ products }) {
     console.log(products, "test")
   return (
     <div className='flex mx-5 pt-4 justify-center bg-white flex-wrap'>
+        <span>All products</span>
+    <div className='flex mx-5 pt-4 justify-center bg-white flex-wrap'>
         {products.map(({ id, title, description, price, category, image })=> (
             <Product
               key={id}
@@ -16,6 +18,7 @@ function ProductFeed({ products }) {
               image={image}
             />
         ))}
+    </div>
     </div>
 
   )
