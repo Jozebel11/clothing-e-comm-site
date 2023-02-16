@@ -5,17 +5,20 @@ import { minHeight, minWidth } from '@mui/system'
 function Product({id, title, price, description, category, image}) {
     
   return (
-    <div className='flex flex-col justify-center bg-white m-4 p-2'
+    <div className='flex flex-col justify-center bg-white mr-4 mt-10 pr-3'
       style={{
-        borderRadius:'5px',
+        
         maxWidth:'250px',
         minWidth:'250px',
         position: 'relative',
-        height:'350px'
+        height:'350px',
+        borderRight: 'solid 0.5px lightgrey'
         
       }}
     
     >
+        <div className='absolute top-0 right-2 text-xs italic text-gray-400'>{category}</div>
+        <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
         <Image 
           src={image}
           height={'150'}
@@ -23,16 +26,20 @@ function Product({id, title, price, description, category, image}) {
           objectFit='contain'
           
         />
-        <p className='content-center mt-4 mb-4 justify-center text-black text-center'>{title}</p>
-        <p className='font-semibold'
+        <p className='content-center mt-4 mb-4 justify-center uppercase text-xs text-black text-center'>{title}</p>
+        </div>
+        <p className='font-semibold text-sm'
           style={{
             position:'absolute',
-            bottom: '0'
+            bottom: '0',
+            left: '20px'
 
 
           }}
           
         >£{price}</p>
+        <button className='absolute bottom-0 right-0 mr-3 mb-3 text-xs uppercase hover:font-semibold'>Add to Bag</button>
+        
 
     </div>
   )

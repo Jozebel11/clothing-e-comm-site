@@ -3,3 +3,13 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Lato:wght@100;300;400&family=Source+Code+Pro:ital,wght@0,400;0,500;1,300&display=swap');
 
+@layer components {
+    .link {
+        @apply cursor-pointer hover:underline;
+    }
+    .button {
+        @apply cursor-pointer;
+    }
+    
+}
+
