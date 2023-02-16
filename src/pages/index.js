@@ -5,6 +5,7 @@ import Header from "../components/Navigation"
 import ProductFeed from "../components/ProductFeed";
 import Showroom from "../components/Showroom"
 import Slideshow from "../components/Slideshow"
+import Footer from "../components/Footer"
 
 
 
@@ -20,25 +21,11 @@ export default function Home({ products }) {
         <title>Clothing E-comm-site</title>
       </Head>
       <Header/>
+      <div style={{ backgroundColor:'#0F172A', minHeight:'100px'}}></div>
       <Showroom/>
-      <main style={{
-        contain:'content',
-        display:'flex',
-        marginTop:'100px',
-        justifyContent:'center',
-        
-        width:'40%',
-        minWidth:'fit-content',
-        padding:'20px',
-        borderRadius:'5px',
-        marginLeft:'20px',
-        marginRight:'20px'
-        
-        
-      }}>
       
-      </main>
       <ProductFeed products={products}/>
+      <Footer />
       
     </div>
   );
@@ -47,7 +34,8 @@ export default function Home({ products }) {
 export async function getServerSideProps(context){
   const data = await Promise.all([
    await fetch("http://fakestoreapi.com/products/category/men's%20clothing"),
-   await fetch("http://fakestoreapi.com/products/category/women's%20clothing")
+   await fetch("http://fakestoreapi.com/products/category/women's%20clothing"),
+   await fetch("http://fakestoreapi.com/products/category/jewelery")
   ]).then((res) => Promise.all(res.map(function (res) {
 		return res.json();
   }))).then(function (data) {

@@ -7,8 +7,12 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export default function Navigation() {
+const { data: session } = useSession();
+
+
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
@@ -79,9 +83,9 @@ export default function Navigation() {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">About</Nav.Link>
                   <Nav.Link href="#action2">New in</Nav.Link>
-                  <Nav.Link href="#action2">Clothing</Nav.Link>
-                  <Nav.Link href="#action2">Sign in</Nav.Link>
-                  <Nav.Link className="flex" href="#action2"><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">0</span></Nav.Link>
+                  <Nav.Link href="#action3">Clothing</Nav.Link>
+                  <Nav.Link onClick={!session ? signIn : signOut}>{session ? `Welcome, ${session.user.name.split(' ')[0]}` : 'Sign in'}</Nav.Link>
+                  <Nav.Link className="flex" href="/checkout"><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">0</span></Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
