@@ -2,13 +2,13 @@ import React from 'react'
 import Image from "next/image"
 import { minHeight, minWidth } from '@mui/system'
 import { useDispatch } from 'react-redux'
-import { addToBasket } from '../slices/basketSlice'
+import { removeFromBasket } from '../slices/basketSlice'
 
-function Product({id, title, price, description, category, image}) {
+function CheckoutProduct({id, title, price, description, category, image}) {
 
     const dispatch = useDispatch();
 
-    const addItemToBasket = () => {
+    const removeItemFromBasket = () => {
         const product = {
             id, 
             title, 
@@ -19,7 +19,7 @@ function Product({id, title, price, description, category, image}) {
 
         };
     // sending the product as an action to the redux store... the basket slice
-        dispatch(addToBasket(product))
+        dispatch(removeFromBasket(product))
 
     }
     
@@ -57,11 +57,11 @@ function Product({id, title, price, description, category, image}) {
           }}
           
         >£{price}</p>
-        <button onClick={addItemToBasket} className='absolute bottom-0 right-0 mr-3 mb-3 text-xs uppercase hover:font-semibold'>Add to Bag</button>
+        <button onClick={removeItemFromBasket} className='absolute bottom-0 right-0 mr-3 mb-3 text-xs uppercase hover:font-semibold'>Remove From Bag</button>
         
 
     </div>
   )
 }
 
-export default Product
+export default CheckoutProduct

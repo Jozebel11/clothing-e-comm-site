@@ -8,8 +8,14 @@ import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { signIn, signOut, useSession } from "next-auth/react"
+import { useRouter } from "next/router"
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 export default function Navigation() {
+const router = useRouter()
+const items = useSelector(selectItems)
+
 const { data: session } = useSession();
 
 
@@ -50,13 +56,14 @@ const { data: session } = useSession();
       }}
     >
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <div className="navbar-brand cursor-pointer">
           <Image 
+            onClick={() => router.push('/')}
             src="/caro-high-resolution-logo-color-on-transparent-background (1).png"
             width={170}
             height={30}
           />
-        </a>
+        </div>
         <>
       {[false].map((expand) => (
         <Navbar key={expand} bg="transparent" expand={expand} variant="dark" className="mb-1" id='nav-3'>
@@ -85,7 +92,7 @@ const { data: session } = useSession();
                   <Nav.Link href="#action2">New in</Nav.Link>
                   <Nav.Link href="#action3">Clothing</Nav.Link>
                   <Nav.Link onClick={!session ? signIn : signOut}>{session ? `Welcome, ${session.user.name.split(' ')[0]}` : 'Sign in'}</Nav.Link>
-                  <Nav.Link className="flex" href="/checkout"><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">0</span></Nav.Link>
+                  <Nav.Link className="flex" onClick={() => router.push('/checkout')}><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">{items.length}</span></Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
