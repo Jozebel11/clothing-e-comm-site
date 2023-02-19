@@ -3,11 +3,8 @@ import Image from "next/image"
 import { minHeight, minWidth } from '@mui/system'
 import { useDispatch } from 'react-redux'
 import { addToBasket } from '../slices/basketSlice'
-import { addToProductPage } from '../slices/productSlice'
-import { useRouter } from "next/router"
 
-function Product({id, title, price, description, category, image}) {
-    const router = useRouter();
+function ProductPageProduct({id, title, price, description, category, image}) {
 
     const dispatch = useDispatch();
 
@@ -25,22 +22,6 @@ function Product({id, title, price, description, category, image}) {
         dispatch(addToBasket(product))
 
     }
-
-    const addItemToProductPage = () => {
-        const product = {
-            id, 
-            title, 
-            price, 
-            description, 
-            category, 
-            image
-
-        };
-
-        dispatch(addToProductPage(product))
-
-
-    }
     
   return (
     <div className='flex flex-col justify-center bg-white mr-4 mt-10 pr-3'
@@ -56,7 +37,7 @@ function Product({id, title, price, description, category, image}) {
     
     >
         <div className='absolute top-0 right-2 text-xs italic text-gray-400'>{category}</div>
-        <div onClick={() => {addItemToProductPage;router.push('/productpage')}} className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
+        <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
         <Image 
           src={image}
           height={'150'}
@@ -83,4 +64,4 @@ function Product({id, title, price, description, category, image}) {
   )
 }
 
-export default Product
+export default ProductPageProduct
