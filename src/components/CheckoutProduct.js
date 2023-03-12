@@ -30,8 +30,7 @@ function CheckoutProduct({id, title, price, description, category, image}) {
           className='justify-center'
           src={image}
           height={'200'}
-          width={'100%'}
-          objectFit='contain'
+          width={'100'}
         />
         <p className='content-center mt-4 mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>{title}</p>
         </div>

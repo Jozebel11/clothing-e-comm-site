@@ -3,42 +3,33 @@ import Image from "next/image"
 import { minHeight, minWidth } from '@mui/system'
 import { useDispatch } from 'react-redux'
 import { addToBasket } from '../slices/basketSlice'
-import { addToProductPage } from '../slices/productSlice'
 import { useRouter } from "next/router"
+import { useState  } from 'react'
+import { useEffect } from 'react'
+import { Translate } from '@mui/icons-material'
+import Link from 'next/link'
 
 function Product({id, title, price, description, category, image}) {
-    const router = useRouter();
+    const product = {
+        id, 
+        title, 
+        price, 
+        description, 
+        category, 
+        image
+
+    };
+   
+
+
+
+ 
 
     const dispatch = useDispatch();
 
     const addItemToBasket = () => {
-        const product = {
-            id, 
-            title, 
-            price, 
-            description, 
-            category, 
-            image
-
-        };
     // sending the product as an action to the redux store... the basket slice
         dispatch(addToBasket(product))
-
-    }
-
-    const addItemToProductPage = () => {
-        const product = {
-            id, 
-            title, 
-            price, 
-            description, 
-            category, 
-            image
-
-        };
-
-        dispatch(addToProductPage(product))
-
 
     }
     
@@ -56,16 +47,19 @@ function Product({id, title, price, description, category, image}) {
     
     >
         <div className='absolute top-0 right-2 text-xs italic text-gray-400'>{category}</div>
-        <div onClick={() => {addItemToProductPage;router.push('/productpage')}} className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
+        <Link href={`/product/${product.id}`}>
+        <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
         <Image 
+        className='self-center'
           src={image}
+          justify-content={'center'}
           height={'150'}
-          width={'100%'}
-          objectFit='contain'
+          width={'100'}
           
         />
         <p className='content-center mt-4 mb-4 justify-center uppercase text-xs text-black text-center'>{title}</p>
         </div>
+        </Link>
         <p className='font-semibold text-sm'
           style={{
             position:'absolute',
@@ -82,5 +76,4 @@ function Product({id, title, price, description, category, image}) {
     </div>
   )
 }
-
 export default Product

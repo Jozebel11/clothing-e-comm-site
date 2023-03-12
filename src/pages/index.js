@@ -6,10 +6,11 @@ import ProductFeed from "../components/ProductFeed";
 import Showroom from "../components/Showroom"
 import Slideshow from "../components/Slideshow"
 import Footer from "../components/Footer"
+import getServerSideProps from "../utils/data";
 
 
 
-export default function Home({ products }) {
+export default function Home({products}) {
 
   return (
     <div style={{
@@ -24,37 +25,13 @@ export default function Home({ products }) {
       <div style={{ backgroundColor:'#0F172A', minHeight:'100px'}}></div>
       <Showroom/>
       
-      <ProductFeed products={products}/>
+      <ProductFeed products={products} key={products.id} />
       <Footer />
       
     </div>
   );
 }
+export { getServerSideProps };
 
-export async function getServerSideProps(context){
-  const data = await Promise.all([
-   await fetch("http://fakestoreapi.com/products/category/men's%20clothing"),
-   await fetch("http://fakestoreapi.com/products/category/women's%20clothing"),
-   await fetch("http://fakestoreapi.com/products/category/jewelery")
-  ]).then((res) => Promise.all(res.map(function (res) {
-		return res.json();
-  }))).then(function (data) {
-    // Log the data to the console
-    // You would do something with both sets of data here
-    const product = data;
-    return product;
-  }).catch(function (error) {
-    // if there's an error, log it
-    console.log(error);
-  });
-  const products = JSON.parse(JSON.stringify(data.reduce((a,b) => a.concat(b))))
 
-  return {
-    props: {
-      products,
-    }
-  }
-  
-
-}
 //"http://fakestoreapi.com/products/category/men's%20clothing"
