@@ -47,7 +47,10 @@ function Product({id, title, price, description, category, image}) {
     
     >
         <div className='absolute top-0 right-2 text-xs italic text-gray-400'>{category}</div>
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/product/${product.id}`}
+        style={{
+          textDecoration:'none',
+        }}>
         <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
         <Image 
         className='self-center'

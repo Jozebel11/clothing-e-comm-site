@@ -21,6 +21,7 @@ function Checkout() {
           description={description}
           category={category}
           image={image}
+          quanitiy={items.filter(item => item.id == id).length}
         />
     ))
 
