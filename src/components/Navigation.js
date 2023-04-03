@@ -12,7 +12,10 @@ import { useRouter } from "next/router"
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 
+
+
 export default function Navigation() {
+
 const router = useRouter()
 const items = useSelector(selectItems)
 
@@ -45,6 +48,9 @@ const { data: session } = useSession();
       setBoxShadow(boxShadowVar);
     }
   }, [clientWindowHeight]);
+
+
+
 
   return (
     <nav
@@ -88,9 +94,9 @@ const { data: session } = useSession();
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">About</Nav.Link>
-                  <Nav.Link href="#action2">New in</Nav.Link>
-                  <Nav.Link href="#action3">Clothing</Nav.Link>
+                  <Nav.Link onClick={() => router.push('/about')}>About</Nav.Link>
+                  <Nav.Link onClick={() => router.push('/')}>Clothing</Nav.Link>
+                  <Nav.Link onClick={() => router.push('/orders')}>Orders</Nav.Link>
                   <Nav.Link onClick={!session ? signIn : signOut}>{session ? `Welcome, ${session.user.name.split(' ')[0]}` : 'Sign in'}</Nav.Link>
                   <Nav.Link className="flex" onClick={() => router.push('/checkout')}><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">{items.length}</span></Nav.Link>
                 </Nav>

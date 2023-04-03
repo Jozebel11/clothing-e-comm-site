@@ -6,6 +6,10 @@ import CheckoutProduct from '../components/CheckoutProduct'
 import { ImageSearch } from '@mui/icons-material';
 import { signIn, signOut, useSession } from "next-auth/react"
 import { selectTotal } from "../slices/basketSlice"
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
+import Footer from '../components/Footer';
+const stripePromise = loadStripe(process.env.stripe_public_key)
 
 function Checkout() {
     const total = useSelector(selectTotal)
@@ -24,9 +28,29 @@ function Checkout() {
           quanitiy={items.filter(item => item.id == id).length}
         />
     ))
+    const createCheckOutSession = async() => {
+      const stripe = await stripePromise;
+      //call the backend to create a checkout session
+      const checkoutSession = await axios.post('/api/create-checkout-session', 
+      {
+        items: items,
+        email: session.user.email
+      })
+
+      //redirect user to checkout
+      const result = await stripe.redirectToCheckout({
+        sessionId: checkoutSession.data.id
+      })
+
+      if(result.error) {
+        alert(result.error.message)
+      }
+
+
+    }
 
   return (
-    <div>
+    <div style={{minHeight:'100%'}}>
     <div style={{
         backgroundColor:'#0F172A',
         minHeight: '100px',
@@ -35,7 +59,7 @@ function Checkout() {
       }}>
         <Navigation />
     </div>
-    <main className='lg:flex max-w-2xl mx-auto'>
+    <main className='lg:flex max-w-2xl mx-auto min-h-screen'>
       <div>
         <div className='flex flex-col p-5 space-y-10 bg-white'>
             <h1 className='text-3xl border-b pb-4 uppercase'>{items.length === 0 ? 'Bag Empty': `${items.length} items in your bag`}</h1>
@@ -53,7 +77,7 @@ function Checkout() {
             <h2 className='flex mt-4 mb-10 uppercase text-base'>total
             <span className='ml-16 font-bold'>£{total}</span>
             </h2>
-            <button onClick={!session ? signIn : signOut} className='uppercase text-sm cursor-pointer hover:font-semibold'>
+            <button role="link" onClick={!session ? signIn : createCheckOutSession} className='uppercase text-sm cursor-pointer hover:font-semibold'>
                 {!session ? "Sign in to checkout" : "checkout"}
             </button>
             </>
@@ -62,6 +86,7 @@ function Checkout() {
       </div>
 
     </main>
+    <Footer />
     </div>
   )
 }

@@ -15,6 +15,7 @@ export default function Home({products}) {
   return (
     <div style={{
       backgroundColor:'#0F172A',
+      minHeight: '100vh'
       
 
     }}>

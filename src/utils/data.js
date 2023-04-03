@@ -1,4 +1,7 @@
+import { getSession } from "next-auth/react";
+
 export async function getServerSideProps(context){
+    const session = await getSession(context);
     const data = await Promise.all([
      await fetch("http://fakestoreapi.com/products/category/men's%20clothing"),
      await fetch("http://fakestoreapi.com/products/category/women's%20clothing"),
@@ -19,6 +22,7 @@ export async function getServerSideProps(context){
     return {
       props: {
         products,
+        session,
       }
     }
     
