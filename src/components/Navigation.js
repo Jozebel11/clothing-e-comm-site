@@ -48,6 +48,7 @@ const { data: session } = useSession();
       setBoxShadow(boxShadowVar);
     }
   }, [clientWindowHeight]);
+  
 
 
 
@@ -94,10 +95,11 @@ const { data: session } = useSession();
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <h2 className="text-xl pr-6 pt-2">{session ? `Welcome, ${session.user.name.split(' ')[0]}` : false}</h2>
                   <Nav.Link onClick={() => router.push('/about')}>About</Nav.Link>
                   <Nav.Link onClick={() => router.push('/')}>Clothing</Nav.Link>
-                  <Nav.Link onClick={() => router.push('/orders')}>Orders</Nav.Link>
-                  <Nav.Link onClick={!session ? signIn : signOut}>{session ? `Welcome, ${session.user.name.split(' ')[0]}` : 'Sign in'}</Nav.Link>
+                  {session ? <Nav.Link onClick={() => router.push('/orders')}>Orders</Nav.Link> : ''}
+                  <Nav.Link onClick={!session ? signIn : signOut}>{session ? `Sign out` : 'Sign in'}</Nav.Link>
                   <Nav.Link className="flex" onClick={() => router.push('/checkout')}><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">{items.length}</span></Nav.Link>
                 </Nav>
               </Offcanvas.Body>

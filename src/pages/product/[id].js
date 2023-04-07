@@ -14,7 +14,7 @@ function ProductScreen({products}) {
         return <div>Product Not Found</div>
     }
   return (
-    <div>
+    <div style={{minHeight:'100vh'}}>
       <div style={{
         backgroundColor:'#0F172A',
         minHeight: '100px',
@@ -22,6 +22,7 @@ function ProductScreen({products}) {
   
       }}></div>
     <Navigation/>
+    
     <ProductPageProduct
           key={product.id}
           id={product.id}
@@ -31,6 +32,7 @@ function ProductScreen({products}) {
           category={product.category}
           image={product.image}
         />
+       
     </div>
   )
 }

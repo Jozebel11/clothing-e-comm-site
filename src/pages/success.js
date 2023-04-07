@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Navigation'
 import { CheckCircleIcon } from "@heroicons/react/solid"
 import { useRouter } from 'next/router'
+import Footer from '../components/Footer'
 
 function success() {
     const router = useRouter();
@@ -33,6 +34,7 @@ function success() {
             </div>
 
         </main>
+        <Footer/>
     
     </div>
     
