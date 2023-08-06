@@ -25,6 +25,7 @@
     "lodash": "^4.17.21",
     "micro": "^10.0.1",
     "moment": "^2.29.4",
+    "mongodb": "^5.7.0",
     "next": "latest",
     "next-auth": "^4.20.1",
     "react": "^18",
@@ -34,11 +35,13 @@
     "react-dom": "^18",
     "react-redux": "7.2.2",
     "react-responsive-carousel": "^3.2.23",
+    "react-scroll": "^1.8.9",
     "stripe": "^11.15.0"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/react-redux": "^7.1.25",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.15",
     "tailwindcss": "^2.1.2"

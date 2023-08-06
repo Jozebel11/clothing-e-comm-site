@@ -1,7 +1,7 @@
 
 import { getSession, useSession } from 'next-auth/react'
 import React from 'react'
-import Header from '../components/Navigation'
+import NavigationDark from '../components/NavigationDark'
 import moment from 'moment'
 import db from '../../firebase'
 import Order from '../components/Order'
@@ -12,19 +12,20 @@ import Footer from '../components/Footer'
 function Orders({ orders }) {
     const session = useSession()
     console.log(orders)
+
     
   return (
     <div style={{minHeight:'100%'}}>
         <div
         style={{
-            backgroundColor:'#0F172A',
+            backgroundColor:'white',
             minHeight: '100px',
             
       
           }}
         
         >
-            <Header/>
+            <NavigationDark/>
         </div>
         <main className='max-w-screen-lg mx-auto p-10 min-h-screen'>
             <h1 className='text-3xl border-b pb-4 uppercase'>
@@ -36,7 +37,7 @@ function Orders({ orders }) {
                 <h2>Please sign in to see your orders</h2>
             )}
             <div className='mt-5 space-y-4'> 
-              {orders.map(({id, amount, amountShipping, items, timestamp, images}) => (
+              {orders.map(({id, amount, amountShipping, items, timestamp}) => (
                 <Order
                   key={id}
                   id={id}
@@ -44,7 +45,7 @@ function Orders({ orders }) {
                   amountShipping={amountShipping}
                   items={items}
                   timestamp={timestamp}
-                  images={images}
+                  
                 
                 />
               ))}
@@ -77,9 +78,9 @@ export async function getServerSideProps(context) {
     const orders = await Promise.all(
         stripeOrders.docs.map(async (order) => ({
             id: order.id,
+            name: String(order.data().name),
             amount: order.data().amount,
             amountShipping: order.data().amount_shipping,
-            images: order.data().images,
             timestamp: moment(order.data().timestamp.toDate()).unix(),
             items: (
                 await stripe.checkout.sessions.listLineItems(order.id, {

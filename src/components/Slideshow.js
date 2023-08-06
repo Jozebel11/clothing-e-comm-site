@@ -16,24 +16,16 @@ function Slideshow() {
         showArrows={false}
         transition='crossfade'
         transitionTime={3000}
-        className="flex max-w-2xl justify-center content-center"
+        className="flex max-w-full justify-center content-center"
         
         >
             <div>
-                <img className='max-w-2xl' loading='lazy' src="/D16917A8-012A-4AF8-9B42-6C55ECB45452_1_102_o.jpeg" alt="" />
+                <img className='max-w-full' loading='lazy' src="/home-slide.jpg" alt="" />
             </div>
             <div>
-                <img className='max-w-2xl' loading='lazy' src="/FFDBA02C-4E82-4340-8273-1592D228A14C_1_102_o.jpeg" alt="" />
+                <img className='max-w-full' loading='lazy' src="/home-slide-2.jpg" alt="" />
             </div>
-            <div>
-                <img className='max-w-2xl' loading='lazy' src="/11770C3D-2969-4FCB-BECC-769B8257D11D_1_102_o.jpeg" alt="" />
-            </div>
-            <div>
-                <img className='max-w-2xl' loading='lazy' src="/9F6BD818-0AB5-4F03-A577-9CF6AE6EDC60_1_102_o.jpeg" alt="" />
-            </div>
-            <div>
-                <img className='max-w-2xl' loading='lazy' src="/9A74844B-5D4F-426C-BF10-8954F734D231_1_102_o.jpeg" alt="" />
-            </div>
+            
 
         </Carousel>
     

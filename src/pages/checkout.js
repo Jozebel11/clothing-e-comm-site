@@ -1,5 +1,5 @@
 import React from 'react'
-import Navigation from '../components/Navigation'
+import NavigationDark from '../components/NavigationDark'
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import CheckoutProduct from '../components/CheckoutProduct'
@@ -16,16 +16,15 @@ function Checkout() {
     const tax = total * 0.2
     const { data: session } = useSession();
     const items = useSelector(selectItems)
-    let basketItems = items.map(({ id, title, description, price, category, image })=> (
+    let basketItems = items.map(({ productID, name, description, priced, category })=> (
         <CheckoutProduct
-          key={id}
-          id={id}
-          title={title}
-          price={price}
+          key={productID}
+          productID={productID}
+          name={name}
+          price={priced}
           description={description}
           category={category}
-          image={image}
-          quanitiy={items.filter(item => item.id == id).length}
+          quanitiy={items.filter(item => item.productID == productID).length}
         />
     ))
     const createCheckOutSession = async() => {
@@ -52,12 +51,12 @@ function Checkout() {
   return (
     <div style={{minHeight:'100%'}}>
     <div style={{
-        backgroundColor:'#0F172A',
+        backgroundColor:'white',
         minHeight: '100px',
         
   
       }}>
-        <Navigation />
+        <NavigationDark />
     </div>
     <main className='lg:flex max-w-2xl mx-auto min-h-screen'>
       <div>

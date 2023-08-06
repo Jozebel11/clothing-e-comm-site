@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Navigation'
+import NavigationDark from '../components/NavigationDark'
 import { CheckCircleIcon } from "@heroicons/react/solid"
 import { useRouter } from 'next/router'
 import Footer from '../components/Footer'
@@ -10,12 +10,12 @@ function success() {
     <div>
     <div
         style={{
-            backgroundColor:'#0F172A',
+            backgroundColor:'white',
             minHeight: '100px',
             
       
           }}>
-        <Header/>
+        <NavigationDark/>
     </div>
         <main className='max-w-screen-lg mx-auto'>
             <div className='flex flex-col p-10'>

@@ -16,18 +16,18 @@ const app = !admin.apps.length
 
  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
- const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
+ const endpointSecret = process.env.STRIPE_SIGNING_SECRET || process.env.STRIPE_SIGNING_SECRET2 || process.env.STRIPE_SIGNING_SECRET3 ;
 
  const fullfillOrder = async (session) => {
-    //console.log('fullfilling order', session)
+    console.log('fullfilling order', session)
     return app.firestore()
     .collection('users')
     .doc(session.metadata.email)
     .collection('orders')
     .doc(session.id).set({
+        name: session.metadata.name,
         amount: session.amount_total / 100,
         amount_shipping: session.total_details.amount_shipping / 100,
-        images: JSON.parse(session.metadata.images),
         timestamp: admin.firestore.FieldValue.serverTimestamp()
     })
     .then(() => {

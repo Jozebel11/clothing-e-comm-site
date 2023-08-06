@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Navigation'
+import NavigationDark from '../components/NavigationDark'
 import Slideshow from '../components/Slideshow'
 import Footer from '../components/Footer'
 
@@ -7,22 +7,22 @@ function About() {
   return (
     <div
       style={{
-        backgroundColor:'#0F172A',
+        backgroundColor:'white',
         minHeight: '100vh'
         
   
     }}>
-        <Header/>
+        <NavigationDark/>
         <div className='flex pt-40'>
             <div className='flex flex-col w-full justify-center p-10 md:flex-row md:justify-items-center '>
                 <div className='max-w-lg'>
-                    <h1 className='text-gray-300 uppercase'>About</h1>
-                    <p className='text-gray-300 text-lg'>
+                    <h1 className='text-black uppercase'>About</h1>
+                    <p className='text-black text-lg'>
                         This is a fake e-commerce site built for portfolio project purposes only. It is to showcase my ability to use a variety of technologies such as ReactJS, NextJS, Redux, Webhooks, TailwindCSS, Google Cloud services, Vercel and Stripe API.
                     </p>
-                    <p className='text-gray-300'>This project focuses on the functionality of the site, rather than the design. For projects focussed on UI/UX, please check out my <a className='text-gray-300 no-underline hover:underline' href="https://www.josephhardwicke.com">portfolio.</a></p>
-                    <p className='text-gray-300 text-md'>To test out the funcitonality of this website, please:</p>
-                    <ul className='list-decimal text-gray-300 uppercase text-xs flex flex-col'>
+                    <p className='text-black'>This project focuses on the functionality of the site, rather than the design. For projects focussed on UI/UX, please check out my <a className='text-gray-300 no-underline hover:underline' href="https://www.josephhardwicke.com">portfolio.</a></p>
+                    <p className='text-black text-md'>To test out the funcitonality of this website, please:</p>
+                    <ul className='list-decimal black uppercase text-xs flex flex-col'>
                         <li className='mb-3'>Sign in</li>
                         <li className='mb-3'>Select any amount of items you wish to place in your bag</li>
                         <li className='mb-3'>Go to your bag</li>

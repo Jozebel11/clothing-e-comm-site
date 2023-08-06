@@ -11,6 +11,8 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/router"
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
+import { Link, animateScroll as scroll } from "react-scroll";
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 
@@ -38,9 +40,9 @@ const { data: session } = useSession();
   };
 
   useEffect(() => {
-    let backgroundTransparacyVar = clientWindowHeight / 600;
+    let backgroundTransparacyVar = clientWindowHeight / 1000;
 
-    if (backgroundTransparacyVar < 1) {
+    if (backgroundTransparacyVar < 0.5) {
       let paddingVar = 30 - backgroundTransparacyVar * 20;
       let boxShadowVar = backgroundTransparacyVar * 0.1;
       setBackgroundTransparacy(backgroundTransparacyVar);
@@ -57,50 +59,54 @@ const { data: session } = useSession();
     <nav
       className="navbar navbar-expand-lg navbar-light fixed-top"
       style={{
-        background: `rgba(51, 65, 85, ${backgroundTransparacy})`,
+        background: `rgba(25, 25, 25, ${backgroundTransparacy})`,
         padding: `${padding}px 0px`,
-        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 0px 0px`,
       }}
     >
       <div className="container">
         <div className="navbar-brand cursor-pointer">
           <Image 
+            className="lg:mt-[-30px]"
             onClick={() => router.push('/')}
-            src="/caro-high-resolution-logo-color-on-transparent-background (1).png"
-            width={170}
-            height={30}
+            src="/caro-high-resolution-logo-white-on-transparent-background-2.png"
+            width={150}
+            height={150}
+
           />
         </div>
         <>
       {[false].map((expand) => (
         <Navbar key={expand} bg="transparent" expand={expand} variant="dark" className="mb-1" id='nav-3'>
           <Container className='header-container' fluid>
-            <Navbar.Toggle className='header-toggle' aria-controls={`offcanvasNavbar-expand-${expand}`}
+            <Navbar.Toggle className='header-toggle  scale-[1.2]' aria-controls={`offcanvasNavbar-expand-${expand}`}
               style={{
                 color:'white',
                 border:'none'
-              }} />
+              }} ><MenuIcon/>
+            </Navbar.Toggle>
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
+              backdrop={false}
+              placement="top"
+              scroll='true'
               style={{
-                background:'rgba(51, 65, 85,1)',
-                color:'white'
+                background:'rgba(25, 25, 25,0.9)',
               }}
             >
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header closeVariant="white" closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <h2 className="text-xl pr-6 pt-2">{session ? `Welcome, ${session.user.name.split(' ')[0]}` : false}</h2>
-                  <Nav.Link onClick={() => router.push('/about')}>About</Nav.Link>
-                  <Nav.Link onClick={() => router.push('/')}>Clothing</Nav.Link>
-                  {session ? <Nav.Link onClick={() => router.push('/orders')}>Orders</Nav.Link> : ''}
-                  <Nav.Link onClick={!session ? signIn : signOut}>{session ? `Sign out` : 'Sign in'}</Nav.Link>
-                  <Nav.Link className="flex" onClick={() => router.push('/checkout')}><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">{items.length}</span></Nav.Link>
+                <Nav className="justify-content-end font-thin  relative uppercase flex-grow-1 pe-3">
+                  <h2 className="text-sm absolute top-[-25px] font-thin text-white right-0 pr-6 pt-2">{session ? `Welcome, ${session.user.name.split(' ')[0]}` : false}</h2>
+                  <Nav.Link className="text-white mr-4" onClick={() => router.push('/about')}>About</Nav.Link>
+                  <Nav.Link className="text-white mr-4"  onClick={() => router.push('/')}>Clothing</Nav.Link>
+                  {session ? <Nav.Link className="text-white mr-4" onClick={() => router.push('/orders')}>Orders</Nav.Link> : ''}
+                  <Nav.Link className="text-white mr-4" onClick={!session ? signIn : signOut}>{session ? `Sign out` : 'Sign in'}</Nav.Link>
+                  <Nav.Link className="flex text-white" onClick={() => router.push('/checkout')}><ShoppingBagOutlinedIcon/><span className="ml-0.5 mt-0.5">{items.length}</span></Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

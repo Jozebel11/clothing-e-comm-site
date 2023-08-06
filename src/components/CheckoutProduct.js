@@ -5,13 +5,22 @@ import { useDispatch } from 'react-redux'
 import { removeFromBasket } from '../slices/basketSlice'
 import { selectItems } from "../slices/basketSlice";
 
-function CheckoutProduct({id, title, price, description, category, image, quantity}) {
+function CheckoutProduct({productID, name, price, description, category, quantity}) {
+
+  const product = {
+    productID, 
+    name, 
+    price, 
+    description, 
+    category
+
+};
 
     const dispatch = useDispatch();
 
     const removeItemFromBasket = () => {
     // sending the product as an action to the redux store... the basket slice
-        dispatch(removeFromBasket({id}))
+        dispatch(removeFromBasket({productID}))
 
     }
     const updateCartHandler = (item, qty) => {
@@ -32,11 +41,11 @@ function CheckoutProduct({id, title, price, description, category, image, quanti
         <div className='flex items-start cursor-pointer hover:font-semibold'>
         <Image 
           className='justify-center'
-          src={image}
-          height={'200'}
+          src={productID ? `/${name}.jpg` : ''}
+          height={'300'}
           width={'100'}
         />
-        <p className='content-center mt-4 mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>{title}</p>
+        <p className='content-center mt-4 mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>{name}</p>
         </div>
         <div className='flex flex-col content-between'>
           <p className='font-semibold mt-4 text-sm'>£{price}</p>

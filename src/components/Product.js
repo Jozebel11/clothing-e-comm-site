@@ -9,14 +9,18 @@ import { useEffect } from 'react'
 import { Translate } from '@mui/icons-material'
 import Link from 'next/link'
 
-function Product({id, title, price, description, category, image}) {
+function Product({productID, name, price, description, category}) {
+    const prices = (x) => {
+      return Number.parseFloat(x).toFixed(2)
+    }
+
+    const priced = Number(prices(price))
     const product = {
-        id, 
-        title, 
-        price, 
+        productID, 
+        name, 
+        priced, 
         description, 
-        category, 
-        image
+        category
 
     };
    
@@ -34,36 +38,26 @@ function Product({id, title, price, description, category, image}) {
     }
     
   return (
-    <div className='flex flex-col justify-center bg-white mr-4 mt-10 pr-3'
-      style={{
-        
-        maxWidth:'250px',
-        minWidth:'250px',
-        position: 'relative',
-        height:'350px',
-        borderRight: 'solid 0.5px lightgrey'
-        
-      }}
+    <div className='flex relative min-w-[300px] min-h-[550px] flex-col justify-center bg-white mr-4 mt-10 pr-3'
     
     >
-        <div className='absolute top-0 right-2 text-xs italic text-gray-400'>{category}</div>
-        <Link href={`/product/${product.id}`}
+        <Link href={`/product/${product.productID}`}
         style={{
           textDecoration:'none',
         }}>
         <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
         <Image 
         className='self-center'
-          src={image}
+          src={product.productID ? `/${name}.jpg` : ''}
           justify-content={'center'}
-          height={'150'}
-          width={'100'}
+          height={'300'}
+          width={'300'}
           
         />
-        <p className='content-center mt-4 mb-4 justify-center uppercase text-xs text-black text-center'>{title}</p>
+        <p className='content-center mt-4 mb-4 justify-center uppercase text-xs text-black text-center'>{name}</p>
         </div>
         </Link>
-        <p className='font-semibold text-sm'
+        <p className='font-thin text-sm'
           style={{
             position:'absolute',
             bottom: '0',
