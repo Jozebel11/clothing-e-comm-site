@@ -48,7 +48,7 @@ export default async (req, res) => {
         const payload = requestBuffer.toString();
         const sig = req.headers["stripe-signature"];
 
-        console.log("Received Stripe Signature:", sig);
+        console.log("Received Stripe Signature:", sig, payload);
 
         let event;
 
