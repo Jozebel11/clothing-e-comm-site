@@ -2,6 +2,14 @@ import { buffer } from 'micro';
 import * as admin from 'firebase-admin';
 
 
+export const config = {
+    api: {
+        bodyParser: false,
+        externalResolver: true
+    }
+}
+
+
 //Secure a connection to firebase from the back-end
 
 const serviceAccount = require("../../../permissions.json");
@@ -45,7 +53,7 @@ const app = !admin.apps.length
 export default async (req, res) => {
     if (req.method === 'POST'){
         const requestBuffer = await buffer(req);
-        const payload = requestBuffer.toString();
+        const payload = requestBuffer;
         const sig = req.headers["stripe-signature"];
 
         console.log("Received Stripe Signature:", sig, payload);
@@ -55,7 +63,7 @@ export default async (req, res) => {
         //Verify that EVENT posted came from stripe
 
         try{
-            event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
+            event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
 
         }catch(err){
             console.log('ERROR', err.message)
@@ -75,12 +83,5 @@ export default async (req, res) => {
         }
 
 
-    }
-}
-
-export const config = {
-    api: {
-        bodyParser: false,
-        externalResolver: true
     }
 }
