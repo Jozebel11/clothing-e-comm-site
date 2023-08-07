@@ -48,12 +48,14 @@ export default async (req, res) => {
         const payload = requestBuffer.toString();
         const sig = req.headers["stripe-signature"];
 
+        console.log("Received Stripe Signature:", sig);
+
         let event;
 
         //Verify that EVENT posted came from stripe
 
         try{
-            event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+            event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
 
         }catch(err){
             console.log('ERROR', err.message)
