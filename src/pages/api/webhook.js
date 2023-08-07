@@ -53,7 +53,7 @@ export default async (req, res) => {
         //Verify that EVENT posted came from stripe
 
         try{
-            event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+            event = stripe.webhooks.constructEvent(req.rawBody.toString(), sig, endpointSecret);
 
         }catch(err){
             console.log('ERROR', err.message)
