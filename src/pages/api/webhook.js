@@ -2,12 +2,6 @@ import { buffer } from 'micro';
 import * as admin from 'firebase-admin';
 
 
-export const config = {
-    api: {
-        bodyParser: false,
-        externalResolver: true
-    }
-}
 
 
 //Secure a connection to firebase from the back-end
@@ -56,7 +50,7 @@ export default async (req, res) => {
         const payload = requestBuffer;
         const sig = req.headers["stripe-signature"];
 
-        console.log("Received Stripe Signature:", sig, payload);
+        console.log("Received Stripe Signature:", sig, endpointSecret);
 
         let event;
 
@@ -83,5 +77,13 @@ export default async (req, res) => {
         }
 
 
+    }
+}
+
+
+export const config = {
+    api: {
+        bodyParser: false,
+        externalResolver: true
     }
 }
