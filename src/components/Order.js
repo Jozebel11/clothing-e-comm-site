@@ -3,7 +3,7 @@ import moment from 'moment'
 import Currency from "react-currency-formatter"
 import Image from "next/image"
 
-function Order({id, amount, amountShipping, timestamp, name}) {
+function Order({id, amount, amountShipping, items, timestamp, name}) {
   return (
     <div>
         <div className='relative border rounded-md'>
@@ -27,10 +27,16 @@ function Order({id, amount, amountShipping, timestamp, name}) {
             <div className='p-5 sm:p-10'>
                 <div className='flex space-x-6 overflow-x-auto'>
                     {name.split(',').map((name) => (
-                        <Image src={`/${name}.jpg`}   height={'150'}
-                        width={'100'} className='h-20 object-cotain sm:h-32'/>
+                        <Image src={`/${name}.jpg`}   height={'180'}
+                        width={'95'} className=' object-cotain sm:h-32'/>
                     ))}
                 </div>
+                <div className='flex space-x-6 overflow-x-auto'>
+                    {name.split(',').map((name) => (
+                        <div className='text-xs w-[95px] mt-2'><p className='uppercase text-center'>{name}</p></div>
+                    ))}
+                </div>
+                
 
             </div>
 

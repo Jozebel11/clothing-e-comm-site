@@ -10,14 +10,19 @@ import { Translate } from '@mui/icons-material'
 import Footer from './Footer'
 
 function ProductPageProduct({productID, name, price, description, category }) {
-    const product = {
-        productID, 
-        name, 
-        price, 
-        description, 
-        category, 
+  const prices = (x) => {
+    return Number.parseFloat(x).toFixed(2)
+  }
 
-    };
+  const priced = Number(prices(price))
+  const product = {
+      productID, 
+      name, 
+      priced, 
+      description, 
+      category
+
+  };
    
 
 

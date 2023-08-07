@@ -21,7 +21,7 @@ function Checkout() {
           key={productID}
           productID={productID}
           name={name}
-          price={priced}
+          price={priced.toFixed(2)}
           description={description}
           category={category}
           quanitiy={items.filter(item => item.productID == productID).length}
@@ -74,7 +74,7 @@ function Checkout() {
             <span className='ml-28 font-bold'>£{tax.toFixed(2)}</span>
             </h3>
             <h2 className='flex mt-4 mb-10 uppercase text-base'>total
-            <span className='ml-16 font-bold'>£{total}</span>
+            <span className='ml-16 font-bold'>£{total.toFixed(2)}</span>
             </h2>
             <button role="link" onClick={!session ? signIn : createCheckOutSession} className='uppercase text-sm cursor-pointer hover:font-semibold'>
                 {!session ? "Sign in to checkout" : "checkout"}
