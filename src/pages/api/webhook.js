@@ -18,7 +18,7 @@ const app = !admin.apps.length
 
  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
- const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
+ const endpointSecret = (process.env.STRIPE_SIGNING_SECRET || "").trim();;
 
  if (typeof endpointSecret !== "string") {
     console.error("Unexpected value for STRIPE_SIGNING_SECRET");
@@ -45,14 +45,14 @@ const app = !admin.apps.length
 
 
 export default async (req, res) => {
-    if (req.method === 'POST'){
-        const requestBuffer = await buffer(req);
+    const requestBuffer = await buffer(req);
         const payload = requestBuffer;
         const sig = req.headers["stripe-signature"];
 
         console.log("Received Stripe Signature:", sig);
 
         let event;
+    if (req.method === 'POST'){
 
         //Verify that EVENT posted came from stripe
 
@@ -69,7 +69,7 @@ export default async (req, res) => {
 
             //Fullfill the order... 
             return fullfillOrder(session)
-            .then(() => res.status(200))
+            .then(() => res.status(200).send('Order fulfilled successfully!'))
             .catch((err) => res.status(400).send(`Webhook Error: ${err.message}`))
 
 
