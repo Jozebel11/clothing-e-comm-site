@@ -48,7 +48,7 @@ function Product({productID, name, price, description, category}) {
         <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
         <Image 
         className='self-center'
-          src={product.productID ? `/${name}.jpg` : ''}
+          src={`/${name}.jpg`}
           justify-content={'center'}
           height={'300'}
           width={'300'}
