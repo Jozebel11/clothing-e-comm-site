@@ -18,6 +18,11 @@ const app = !admin.apps.length
 
  const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
+ if (typeof endpointSecret !== "string") {
+    console.error("Unexpected value for STRIPE_SIGNING_SECRET");
+    // potentially throw an error here
+  }
+
  const fullfillOrder = async (session) => {
     console.log('fullfilling order', session)
     return app.firestore()
@@ -48,7 +53,7 @@ export default async (req, res) => {
         //Verify that EVENT posted came from stripe
 
         try{
-            event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+            event = stripe.webhooks.constructEvent(req.rawBody.toString(), sig, endpointSecret);
 
         }catch(err){
             console.log('ERROR', err.message)
