@@ -33,9 +33,7 @@ function About() {
                     </ul>
 
                 </div>
-                <div className='flex pt-14 md:ml-20'>
-                    <Slideshow />
-                </div>
+                
             </div>
 
         </div>

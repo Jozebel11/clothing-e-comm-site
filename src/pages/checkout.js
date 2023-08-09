@@ -76,7 +76,7 @@ function Checkout() {
             <h2 className='flex mt-4 mb-10 uppercase text-base'>total
             <span className='ml-16 font-bold'>£{total.toFixed(2)}</span>
             </h2>
-            <button role="link" onClick={!session ? signIn : createCheckOutSession} className='uppercase text-sm cursor-pointer hover:font-semibold'>
+            <button role="link" onClick={!session ? signIn : createCheckOutSession} className='flex transition-all duration-700 items-center justify-center text-center bg-black text-white p-2 w-[150px] h-[40px] uppercase'>
                 {!session ? "Sign in to checkout" : "checkout"}
             </button>
             </>

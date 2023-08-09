@@ -38,36 +38,33 @@ function Product({productID, name, price, description, category}) {
     }
     
   return (
-    <div className='flex relative min-w-[300px] min-h-[550px] flex-col justify-center bg-white mr-4 mt-10 pr-3'
+    <div className='flex relative flex-col justify-center bg-white sm:mt-10 sm:px-2'
     
     >
         <Link href={`/product/${product.productID}`}
         style={{
           textDecoration:'none',
         }}>
-        <div className='flex flex-col justify-center cursor-pointer hover:font-semibold'>
+        <div className='flex overflow-hidden flex-col justify-center cursor-pointer hover:font-semibold'>
+        <div className='overflow-hidden'>
         <Image 
-        className='self-center'
+        className='self-center bg-[#d1c3b3d9] transition-all text-black text-center duration-500 overflow-hidden hover:scale-110'
           src={`/${name}.jpg`}
           justify-content={'center'}
           height={'300'}
           width={'300'}
+          alt={`${name}`}
           
         />
-        <p className='content-center mt-4 mb-4 justify-center uppercase text-xs text-black text-center'>{name}</p>
+        </div>
+        <p className='content-center mt-4 mb-2 justify-center uppercase text-xs text-black text-center'>{name}</p>
         </div>
         </Link>
-        <p className='font-thin text-sm'
-          style={{
-            position:'absolute',
-            bottom: '0',
-            left: '20px'
-
-
-          }}
+        <p className='font-thin justify-center content-center text-center text-sm'
+          
           
         >£{price}</p>
-        <button onClick={addItemToBasket} className='absolute bottom-0 right-0 mr-3 mb-3 text-xs uppercase hover:font-semibold'>Add to Bag</button>
+        
         
 
     </div>

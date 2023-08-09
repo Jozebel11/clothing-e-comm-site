@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Product from './Product'
+import { motion as m } from "framer-motion";
+import  {container, item, scrollContainer}  from "../../animation";
 
 function ProductFeed({ products }) {
     let productFeed = products.map(({ productID, name, description, price, category })=> (
@@ -14,16 +16,16 @@ function ProductFeed({ products }) {
         />
     ))
     const [showProducts, setProducts] = useState(true)
-    const [productQuantity, setProductQuantity] = useState(productFeed.slice(0,6))
+    const [productQuantity, setProductQuantity] = useState(productFeed.slice(0,5))
 
     function showMoreOrLess(){
         if (showProducts)[
             setProducts(showProducts => showProducts = false),
-            setProductQuantity(productQuantity => productQuantity = productFeed.slice(6,12))
+            setProductQuantity(productQuantity => productQuantity = productFeed.slice(0,21))
         ]
         if (showProducts == false){
             setProducts(showProducts => showProducts = true),
-            setProductQuantity(productQuantity => productQuantity = productFeed.slice(0,6))
+            setProductQuantity(productQuantity => productQuantity = productFeed.slice(0,5))
         }
        
        
@@ -34,14 +36,21 @@ function ProductFeed({ products }) {
     }
 
   return (
-    <div className='flex mx-5 pt-4 justify-center bg-white flex-col'
+    <div className='flex mx-5 pt-4 transition-all duration-700 justify-center bg-white flex-col'
       style={{borderRadius: '3px'}}>
-    <div className='flex mx-5 pt-4 justify-center bg-white flex-wrap mb-3'>
-        {productQuantity}
+    <div className='sm:mx-5 pt-10 transition-all duration-700 bg-white mb-3'>
+        <m.div variants={scrollContainer}
+         initial="hidden"
+         whileInView="show"
+          viewport={{ once: true }}>
+          <div className='transition-all duration-700' >
+          <m.div variant={item} className=' flex flex-wrap w-full transition-all duration-700 justify-center flex-row'>
+            {productQuantity}
+          </m.div>
+          </div>
+        </m.div>
     </div>
-    <span className='justify-center text-center uppercase text-gray-400 text-xs hover:font-semibold m-4'>{`Showing ${productFeed.indexOf(productFeed[0]) + 1} - ${productFeed.indexOf(productFeed[0] + 1)} out of ${productFeed.length}`}</span>
-    <button onClick={showMoreOrLess} className='justify-center text-center uppercase text-xs hover:font-semibold m-4'>0</button>
-    <button onClick={showMoreOrLess} className='justify-center text-center uppercase text-xs hover:font-semibold m-4'></button>
+    <button onClick={showMoreOrLess} className='justify-center text-center uppercase text-xs hover:font-semibold m-4'>{showProducts ? 'show more' : 'show less'}</button>
     </div>
 
   )

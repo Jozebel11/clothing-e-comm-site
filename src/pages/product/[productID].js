@@ -3,6 +3,7 @@ import React from 'react'
 import ProductPageProduct from '../../components/ProductPageProduct';
 import getServerSideProps  from "../../utils/data";
 import NavigationDark from '../../components/NavigationDark'
+import Footer from '../../components/Footer';
 
 
 function ProductScreen({products}) {
@@ -23,7 +24,8 @@ function ProductScreen({products}) {
       }}></div>
     <NavigationDark />
     
-    <ProductPageProduct
+      <div className='flex flex-col'> 
+      <ProductPageProduct
           key={product.productID}
           productID={product.productID}
           name={product.name}
@@ -31,6 +33,12 @@ function ProductScreen({products}) {
           description={product.description}
           category={product.category}
         />
+        <div className='mt-20'>
+        <Footer/>
+        </div>
+        
+      </div>
+      
        
     </div>
   )

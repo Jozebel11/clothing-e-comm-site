@@ -13,6 +13,8 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import { Link, animateScroll as scroll } from "react-scroll";
 import MenuIcon from '@mui/icons-material/Menu';
+import { motion as m } from "framer-motion";
+import  {container, item, scrollContainer}  from "../../animation";
 
 
 
@@ -56,7 +58,10 @@ const { data: session } = useSession();
 
 
   return (
-    <nav
+    <m.nav
+    variants={container}
+    initial="hidden"
+    animate="show"
       className="navbar navbar-expand-lg navbar-light fixed-top"
       style={{
         background: `rgba(25, 25, 25, ${backgroundTransparacy})`,
@@ -115,6 +120,6 @@ const { data: session } = useSession();
       ))}
     </>
       </div>
-    </nav>
+    </m.nav>
   );
 }
