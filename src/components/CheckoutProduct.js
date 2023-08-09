@@ -44,7 +44,7 @@ function CheckoutProduct({productID, name, price, description, category, quantit
           src={productID ? `/${name.toUpperCase()}.jpg` : ''}
           height={'150'}
           width={'100'}
-          alt={`${name}`}
+          alt={`${name.toUpperCase()}`}
         />
         <p className='content-center mt-4 mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>{name}</p>
         </div>
