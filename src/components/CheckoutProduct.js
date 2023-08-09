@@ -41,7 +41,7 @@ function CheckoutProduct({productID, name, price, description, category, quantit
         <div className='flex items-start cursor-pointer hover:font-semibold'>
         <Image 
           className='justify-center bg-[#d1c3b3d9] text-center'
-          src={productID ? `/${name}.jpg` : ''}
+          src={productID ? `/${name.toUpperCase()}.jpg` : ''}
           height={'150'}
           width={'100'}
           alt={`${name}`}

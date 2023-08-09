@@ -59,7 +59,7 @@ function ProductPageProduct({productID, name, price, description, category }) {
         <div className='flex flex-col mt-4 sm:mt-52 md:w-1/2 md:mt-0  justify-center'>
         <Image 
         className='self-center justify-center bg-[#d1c3b3d9] text-center'
-        src={product.productID ? `/${name}.jpg` : ''}
+        src={product.productID ? `/${name.toUpperCase()}.jpg` : ''}
           justify-content={'center'}
           height={'500'}
           width={'500'}

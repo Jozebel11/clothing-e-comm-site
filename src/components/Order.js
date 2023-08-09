@@ -27,7 +27,7 @@ function Order({id, amount, amountShipping, items, timestamp, name}) {
             <div className='p-5 sm:p-10'>
                 <div className='flex space-x-6 overflow-x-auto'>
                     {name.split(',').map((name) => (
-                        <Image src={`/${name}.jpg`}   height={'180'}
+                        <Image src={`/${name.toUpperCase()}.jpg`}   height={'180'}
                         width={'95'} className=' object-cotain sm:h-32 bg-[#d1c3b3d9] text-center'
                         alt={`${name}`}/>
                     ))}
