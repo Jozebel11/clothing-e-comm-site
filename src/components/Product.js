@@ -49,7 +49,7 @@ function Product({productID, name, price, description, category}) {
         <div className='overflow-hidden'>
         <Image 
         className='self-center bg-[#d1c3b3d9] transition-all text-black text-center duration-500 overflow-hidden hover:scale-110'
-          src={`/public/${name}.jpg`}
+          src={`/${name}.jpg`}
           justify-content={'center'}
           height={'300'}
           width={'300'}
