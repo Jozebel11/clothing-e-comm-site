@@ -41,7 +41,7 @@ function Product({productID, name, price, description, category}) {
     <div className='flex relative flex-col justify-center bg-white sm:mt-10 sm:px-2'
     
     >
-        <Link href={`/${product.productID}`}
+        <Link href={`/product/${product.productID}`}
         style={{
           textDecoration:'none',
         }}>
