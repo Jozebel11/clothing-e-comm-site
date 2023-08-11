@@ -32,6 +32,7 @@ const app = !admin.apps.length
     .doc(session.metadata.email)
     .collection('orders')
     .doc(session.id).set({
+        size: session.metadata.description,
         name: session.metadata.name,
         amount: session.amount_total / 100,
         amount_shipping: session.total_details.amount_shipping / 100,

@@ -33,7 +33,7 @@ function ProductScreen({products}) {
           description={product.description}
           category={product.category}
         />
-        <div className='mt-20'>
+        <div className='mt-36'>
         <Footer/>
         </div>
         

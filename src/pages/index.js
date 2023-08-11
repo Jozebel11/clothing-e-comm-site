@@ -22,7 +22,7 @@ export default function Home({products}) {
 
     }}>
       <Head>
-        <title>Clothing E-comm-site</title>
+        <title>Caro</title>
       </Head>
       <Header/>
       <Slideshow />

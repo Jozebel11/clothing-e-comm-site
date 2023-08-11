@@ -5,14 +5,15 @@ import { useDispatch } from 'react-redux'
 import { removeFromBasket } from '../slices/basketSlice'
 import { selectItems } from "../slices/basketSlice";
 
-function CheckoutProduct({productID, name, price, description, category, quantity}) {
+function CheckoutProduct({productID, name, price, description, category, quantity, size}) {
 
   const product = {
     productID, 
     name, 
     price, 
     description, 
-    category
+    category,
+    size
 
 };
 
@@ -46,12 +47,13 @@ function CheckoutProduct({productID, name, price, description, category, quantit
           width={'100'}
           alt={`${name}`}
         />
+        <div className='flex flex-col'>
         <p className='content-center mt-4 mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>{name}</p>
+        <p className='content-center mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>Size: {size}</p>
+        <p className='content-center mb-4 mx-4 justify-center w-48 uppercase text-xs text-black'>£{price}</p>
         </div>
-        <div className='flex flex-col content-between'>
-          <p className='font-semibold mt-4 text-sm'>£{price}</p>
-          <p className=''>
-          </p>
+        </div>
+        <div className='flex content-between'>
           <button onClick={removeItemFromBasket} className='items-center mt-20 mr-3 mb-3 text-xs uppercase hover:font-semibold'>Remove</button>
         </div>
 

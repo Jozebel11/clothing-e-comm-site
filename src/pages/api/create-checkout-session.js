@@ -5,6 +5,10 @@ export default async (req, res) => {
 
     
 
+    console.log(items.map(item => item.size), items.map(item => item.name))
+
+    
+
     const transformedItems = items.map(item => ({
         quantity: 1,
         price_data: {
@@ -12,10 +16,16 @@ export default async (req, res) => {
             unit_amount: item.priced * 100,
             product_data: {
                 name: String(item.name),
+                description: String(item.size)
+                
+                
+                
+                
+               
                
 
             },
-        }
+        },
     }))
 
     const session = await stripe.checkout.sessions.create({
@@ -53,7 +63,10 @@ export default async (req, res) => {
         cancel_url:  `${process.env.HOST}/checkout`,
         metadata: {
             email,
-            name: String(items.map(item => item.name))
+            name: String(items.map(item => item.name)),
+            description: String(items.map(item => item.size))
+            
+            
             
         }
     })

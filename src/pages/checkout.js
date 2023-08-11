@@ -16,7 +16,7 @@ function Checkout() {
     const tax = total * 0.2
     const { data: session } = useSession();
     const items = useSelector(selectItems)
-    let basketItems = items.map(({ productID, name, description, priced, category })=> (
+    let basketItems = items.map(({ productID, name, description, priced, category, size })=> (
         <CheckoutProduct
           key={productID}
           productID={productID}
@@ -25,6 +25,7 @@ function Checkout() {
           description={description}
           category={category}
           quanitiy={items.filter(item => item.productID == productID).length}
+          size={size}
         />
     ))
     const createCheckOutSession = async() => {

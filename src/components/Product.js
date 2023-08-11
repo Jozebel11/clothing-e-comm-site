@@ -24,18 +24,6 @@ function Product({productID, name, price, description, category}) {
 
     };
    
-
-
-
- 
-
-    const dispatch = useDispatch();
-
-    const addItemToBasket = () => {
-    // sending the product as an action to the redux store... the basket slice
-        dispatch(addToBasket(product))
-
-    }
     
   return (
     <div className='flex relative flex-col justify-center bg-white sm:mt-10 sm:px-2'
