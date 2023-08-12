@@ -28,10 +28,11 @@ export default function Home({products}) {
       
       <Slideshow />
       <div className="">
-      <div>
-        <h4>
-          
+      <div className="border-b-2 mx-8 pb-12">
+        <h4 className="uppercase md:text-[70px] text-center font-thin">
+          Summer is here
         </h4>
+        <p className="uppercase md:text-[30px] text-center font-thin">discover our new collection below</p>
       </div>
       <ProductFeed products={products} key={products.productID} />
       <Footer />
