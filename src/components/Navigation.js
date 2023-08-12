@@ -62,7 +62,7 @@ const { data: session } = useSession();
     variants={container}
     initial="hidden"
     animate="show"
-      className="navbar navbar-expand-lg navbar-light fixed-top"
+      className="navbar navbar-expand-lg -mt-4 sm:mt-0 navbar-light fixed-top"
       style={{
         background: `rgba(25, 25, 25, ${backgroundTransparacy})`,
         padding: `${padding}px 0px`,
@@ -72,19 +72,19 @@ const { data: session } = useSession();
       <div className="container">
         <div className="navbar-brand cursor-pointer">
           <Image 
-            className="lg:mt-[-30px]"
+            className="lg:mt-[-30px] sm:scale-[1.2]"
             onClick={() => router.push('/')}
             src="/caro-high-resolution-logo-white-on-transparent-background-2.png"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
 
           />
         </div>
         <>
       {[false].map((expand) => (
         <Navbar key={expand} bg="transparent" expand={expand} variant="dark" className="mb-1" id='nav-3'>
-          <Container className='header-container' fluid>
-            <Navbar.Toggle className='header-toggle  scale-[1.2]' aria-controls={`offcanvasNavbar-expand-${expand}`}
+          <Container className='header-container ' fluid>
+            <Navbar.Toggle className='header-toggle scale-[1.2]' aria-controls={`offcanvasNavbar-expand-${expand}`}
               style={{
                 color:'white',
                 border:'none'

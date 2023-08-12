@@ -15,7 +15,7 @@ export default function Home({products}) {
   const router = useRouter()
 
   return (
-    <div style={{
+    <div className="relative" style={{
       backgroundColor:'white',
       minHeight: '100vh'
       
@@ -25,8 +25,14 @@ export default function Home({products}) {
         <title>Caro</title>
       </Head>
       <Header/>
+      
       <Slideshow />
       <div className="">
+      <div>
+        <h4>
+          
+        </h4>
+      </div>
       <ProductFeed products={products} key={products.productID} />
       <Footer />
       </div>

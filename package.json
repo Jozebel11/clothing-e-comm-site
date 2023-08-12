@@ -43,7 +43,10 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "reduxjs-toolkit-persist": "^7.2.1",
-    "stripe": "^11.15.0"
+    "stripe": "^11.15.0",
+    "mailgun-js": "^0.22.0",
+    "mailgun.js": "^9.0.1",
+    "form-data": "^4.0.0"
   },
   "license": "MIT",
   "devDependencies": {
