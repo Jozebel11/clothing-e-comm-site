@@ -59,7 +59,7 @@ function ProductPageProduct({productID, name, price, description, category }) {
 
     
   return (
-    <div className='flex justify-center flex-col md:flex-row bg-white mt-40'
+    <div className='flex justify-center flex-col lg:flex-row bg-white mt-40'
       style={{
         
         maxWidth:'1500px',
@@ -71,9 +71,9 @@ function ProductPageProduct({productID, name, price, description, category }) {
       }}
     
     >
-        <div className='flex flex-col  mt-4 md:w-1/2 md:mt-0 pt-8 md:pt-0 justify-center'>
+        <div className='flex flex-col  mt-4 lg:w-1/2 lg:mt-0 pt-8 lg:pt-0 justify-center'>
         <Image 
-        className='self-center md:w-[70%] bg-[#d1c3b3d9] text-center'
+        className='self-center md:w-[50%] lg:w-[70%] bg-[#d1c3b3d9] text-center'
         src={product.productID ? `/${name}.jpg` : ''}
           justify-content={'center'}
           height={'600'}
@@ -82,8 +82,8 @@ function ProductPageProduct({productID, name, price, description, category }) {
           
         />
         </div>
-        <div className='flex ml-8 flex-wrap flex-col items-start pb-20 max-w-50 md:w-1/4'>
-        <p className=' mt-4  mb-8 self-center sm:self-start uppercase  text-black '>{name}</p>
+        <div className='flex ml-8 flex-wrap flex-col items-start pb-20 max-w-50 lg:w-1/4'>
+        <p className=' mt-4 -ml-8 lg:ml-0 mb-8 self-center lg:self-start uppercase  text-black '>{name}</p>
         <span className='uppercase text-xs mb-2 underline'>eu size</span>
         <div className='flex self-center -ml-8 sm:self-start sm:ml-0 mb-8'>
         {sizes.map(size => (
